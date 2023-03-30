@@ -92,17 +92,22 @@ body {
     width: 171px;
 }
 
-.movieInfo {
+.movieInfoArea {
     margin-left: 34px;
 }
 
 .movieTitle {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 700;
-    margin-bottom: 19px;
+}
+
+.movieInfo {
+    font-size: 12px;
+    font-weight: 300;
 }
 
 .movieOverview {
+    margin-top: 19px;
     font-size: 16px;
 }
 
@@ -119,7 +124,7 @@ body {
         width: auto;
     }
 
-    .movieInfo {
+    .movieInfoArea {
         text-align: center;
         margin-left: auto;
     }

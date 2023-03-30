@@ -11,7 +11,6 @@ const getData = async () => {
     data = await fetch(`${BASE_URL}${Math.floor(Math.random() * 88955) + 1}?${API_KEY}&${language}`).then(r => r.json() )
   }
   while(!data.overview)
-  console.log(data)
   return data
 }
 
@@ -28,21 +27,28 @@ document.getElementById('findMovie').addEventListener('click', async () => {
   moviePoster.className = 'moviePoster'
 
   const movieTitle = document.createElement('h4')
-  movieTitle.innerText = movieData.title
+  movieTitle.innerText = `${movieData.title} (${movieData.release_date.slice(0, 4)})`
   movieTitle.className = 'movieTitle'
+
+  const movieInfo = document.createElement('span')
+  const movieGenre = movieData.genres.map(genre => genre.name).join(', ');
+  const hours = Math.floor(movieData.runtime / 60);
+  const remainingMinutes = movieData.runtime % 60;
+  movieInfo.innerText = `${hours}h ${remainingMinutes}min • ${movieGenre} • Nota: ${movieData.vote_average}`
+  movieInfo.className = 'movieInfo'
 
   const movieOverview = document.createElement('p')
   movieOverview.innerText = movieData.overview
   movieOverview.className = 'movieOverview'
 
-  const movieInfo = document.createElement('div')
-  movieInfo.className = 'movieInfo'
+  const movieInfoArea = document.createElement('div')
+  movieInfoArea.className = 'movieInfoArea'
 
-  movieInfo.append(movieTitle, movieOverview)
+  movieInfoArea.append(movieTitle, movieInfo, movieOverview)
 
   const movie = document.createElement('div')
   movie.className = 'root'
-  movie.append(moviePoster, movieInfo)
+  movie.append(moviePoster, movieInfoArea)
 
   root.append(movie)
 })
