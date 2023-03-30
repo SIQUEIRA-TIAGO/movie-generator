@@ -121,6 +121,7 @@ body {
 
     .movieInfo {
         text-align: center;
+        margin-left: auto;
     }
 
     .movieTitle {

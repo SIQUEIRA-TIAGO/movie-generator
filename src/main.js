@@ -15,8 +15,6 @@ const getData = async () => {
   return data
 }
 
-getData()
-
 document.getElementById('findMovie').addEventListener('click', async () => {
   const movieData = await getData()
 
